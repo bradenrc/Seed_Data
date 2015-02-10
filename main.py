@@ -16,8 +16,8 @@ outall = open("alldata.csv", "w")
 act = []
 act.append(["12345", datetime.date(2007, 12, 1), datetime.date(2014, 12, 1), ["55554", "656547", "32325"]])
 act.append(["55554", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["65874", "656547", "32325"]])
-act.append(["656547", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["55554", "656547", "32325"]])
-act.append(["32325", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["656547", "32325"]])
+act.append(["656547", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["55554", "32325"]])
+act.append(["32325", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["656547"]])
 act.append(["65874", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["32325"]])
 
 
@@ -39,11 +39,11 @@ def create_trans(date):
     return [date.isoformat(), random_company(), round(amnt,2)]
 
 def create_random_transfer(date, act_from):
-    #only return on in 1 random transactions
+    #only return 1 in 10 random transactions
     if random.randint(1,10) == 1:
-        amnt = random.random() * random.randint(1,10000) * -1
         for x in act:
-            if x[0] != act_from:
+            if x[0] == act_from:
+                amnt = random.random() * random.randint(1,10000) * -1
                 return [date.isoformat(), random.choice(x[3]), round(amnt,2)]
 
 #        return [date.isoformat(), random_company(), round(amnt,2)]
@@ -92,4 +92,3 @@ def create_act_record(actnt):
 
 for a in act:
     create_act_record(a)
-

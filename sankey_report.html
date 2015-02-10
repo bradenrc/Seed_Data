@@ -1,0 +1,39 @@
+<html>
+<head>
+<script type="text/javascript"
+  src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['sankey']}]}">
+</script>
+
+<div id="sankey_basic" style="width: 900px; height: 300px;"></div>
+
+<script type="text/javascript">
+google.setOnLoadCallback(drawChart);
+
+   function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Weight');
+    data.addRows([
+['12345', '32325',774753.89],
+['12345', '55554',776344.76],
+['12345', '656547',800570.12],
+['32325', '656547',1001400.19],
+['55554', '32325',436566.04],
+['55554', '656547',319983.51],
+['55554', '65874',398479.0],
+['65874', '32325',953565.16]
+    ]);
+
+    // Set chart options
+    var options = {
+      width: 600,
+    };
+
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+    chart.draw(data, options);
+   }
+</script>
+</head>
+</html>
