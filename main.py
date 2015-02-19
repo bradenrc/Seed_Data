@@ -22,14 +22,14 @@ act.append(["65874", datetime.date(2008, 6, 1), datetime.date(2011, 7, 1), ["323
 
 
 #create list of companies and functions to grab random company
-company_list = open("company_names.txt", "r")
+company_list = open("small_company_names.txt", "r")
 companies = []
 for x in company_list:
     companies.append(x.replace("\n", ""))
 
 def random_company():
-    i = random.randint(1,1400)
-    return companies[i]
+    i = random.randint(1,17)
+    return companies[i].replace(",", "").replace("(", "").replace(")", "")
 
 #functions to create a random transaction
 def create_trans(date):
